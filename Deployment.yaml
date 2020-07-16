@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: otus-deployment
+spec:
+    replicas: 2
+    selector:
+       matchLabels:
+        app: dotnetotusapp
+    template:
+       metadata:
+          labels:
+            app: dotnetotusapp
+       spec:
+          containers:
+          - name: dotnetotusapp
+            image: nihr0m/otusapp:dotnecoreapp
+            ports:
+              - name: web 
+                containerPort: 80
