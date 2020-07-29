@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "d42ca96a-8d07-4d81-864f-ca0f0b3d8ac7",
+		"name": "Otus Arch API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e792e02e-3a4a-43d3-900a-6c3825bf7446",
+						"exec": [
+							"var responseJSON = JSON.parse(responseBody)\r",
+							"pm.collectionVariables.set(\"userId\", responseJSON[\"userId\"])\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"Nihr0m\",\r\n    \"firstName\": \"Evgeny\",\r\n    \"lastName\": \"Lobachev\",\r\n    \"email\": \"some@mail.com\",\r\n    \"phone\": \"12341234124\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "arch.homework/otusapp/evgenylobachev/user",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"otusapp",
+						"evgenylobachev",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bdd0f886-849f-464e-b7e5-1da3e8414a52",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "arch.homework/otusapp/evgenylobachev/user/{{userId}}",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"otusapp",
+						"evgenylobachev",
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "506c93c3-946a-47a3-9a58-de3f01128baa",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"Nihr0m\",\r\n    \"firstName\": \"Evgeny\",\r\n    \"lastName\": \"Lobachev\",\r\n    \"email\": \"some@mail.com\",\r\n    \"phone\": \"99999999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "arch.homework/otusapp/evgenylobachev/user/{{userId}}",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"otusapp",
+						"evgenylobachev",
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "244af5bf-9257-4b75-b1a6-7f46f974a7f2",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"Nihr0m\",\r\n    \"firstName\": \"Evgeny\",\r\n    \"lastName\": \"Lobachev\",\r\n    \"email\": \"some@mail.com\",\r\n    \"phone\": \"99999999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "arch.homework/otusapp/evgenylobachev/user/{{userId}}",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"otusapp",
+						"evgenylobachev",
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ad3a9e92-ee03-47ba-bda1-841424e3a10f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "243adb59-fe27-4e7d-9acf-fcd96eb15b92",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "fd07cdcb-2690-4475-be01-e62dd2fae7b9",
+			"key": "userId",
+			"value": "10ea22a7-4ad8-4645-8351-efbc10a84ed7"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

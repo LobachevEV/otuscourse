@@ -1,16 +1,16 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: migration
+  name: migrations
 spec:
   backoffLimit: 4
-  activeDeadlineSeconds: 100
+  activeDeadlineSeconds: 60
   template:
     spec:
       containers:
-        - name: otusapp
-          image: nihr0m/otusapp-migrations:latest
-          env:          
+        - name: "{{ .Chart.Name }}-migrations"
+          image: "{{ .Values.image.repository }}-migrations:{{.Values.image.migrationTag}}"
+          env:
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
@@ -35,5 +35,5 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: otusapp-secret
-                  key: DB_PASSWORD          
+                  key: DB_PASSWORD
       restartPolicy: Never
