@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migration
+spec:
+  backoffLimit: 4
+  activeDeadlineSeconds: 100
+  template:
+    spec:
+      containers:
+        - name: otusapp
+          image: nihr0m/otusapp-migrations:latest
+          env:          
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: otusapp-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: otusapp-config
+                  key: DB_PORT
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: otusapp-config
+                  key: DB_NAME
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: otusapp-config
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: otusapp-secret
+                  key: DB_PASSWORD          
+      restartPolicy: Never

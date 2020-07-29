@@ -12,5 +12,5 @@ spec:
       paths:
         - path: /otusapp/evgenylobachev($|/)(.*)
           backend:
-            serviceName: otusapp-service
+            serviceName: otusapp
             servicePort: 9000
